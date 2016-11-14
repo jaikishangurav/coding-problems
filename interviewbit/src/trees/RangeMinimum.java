@@ -27,9 +27,7 @@ public class RangeMinimum {
 			return Integer.MAX_VALUE;
 		}
 		int mid=low+(high-low)/2;
-		return Math.min(getRangeMin(segTree,rlow,rhigh,low,mid,2*pos+1), getRangeMin(segTree,rlow,rhigh,mid+1,high,2*pos+1));
-		
-		
+		return Math.min(getRangeMin(segTree,rlow,rhigh,low,mid,2*pos+1), getRangeMin(segTree,rlow,rhigh,mid+1,high,2*pos+2));				
 	}
 	
 

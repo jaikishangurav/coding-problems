@@ -11,7 +11,7 @@ public class FindDuplicateInArray {
 
 	public int repeatedNumber(final List<Integer> a) {
 	   int n=a.size();
-	    return ans;
+	    return 0;
 	}
 	
 }
