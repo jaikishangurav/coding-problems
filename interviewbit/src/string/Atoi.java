@@ -9,7 +9,7 @@ public class Atoi {
 		System.out.println(atoi("12365+6541"));
 	}
 	public static int atoi(final String a) {
-	    int n=a.length();
+		int n=a.length();
 	    int space=0;
 	    if(a==null||a.isEmpty())
 	        return 0;
@@ -23,19 +23,19 @@ public class Atoi {
 	        return 0;
 	    StringBuffer sb=new StringBuffer();
 	    boolean isNegative=false;
-	    if(a.charAt(space)=='+' || a.charAt(space)=='-' && isValid(a.charAt(space+1))){
-	    	sb.append(a.charAt(space++));
+	    if(isValid(a.charAt(space))&&a.charAt(space)=='-'){
+	    	isNegative=true;
 	    }
 	    while(space<n){
 	        char c=a.charAt(space);
 	        if(isValid(c)){
-	        	sb.append(c);
-	        	if(sb.length()>=10){
-	        		if(isOverflow(Long.parseLong(sb.toString()))){
-	        			
-	        		}
-	        	}
-	        	space++;  
+	            if(c=='+'||c=='-'){
+	                space++;
+	            }     
+	            else{
+	                sb.append(c);
+	                space++;
+	            }     
 	        }else{
 	            break;
 	        }
@@ -67,8 +67,4 @@ public class Atoi {
 	    return false;
 	}
 	
-	public static boolean isOverflow(long a){
-		if(a>)
-	}
-
 }

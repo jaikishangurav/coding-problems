@@ -13,8 +13,19 @@ public class CoinChange {
 		ArrayList<Integer> coins=new ArrayList(Arrays.asList(a));
         int n = 13;
         minNumberOfCoins(coins,n);
-        
+        System.out.println("\nNumber of ways to change coin using recursion:"+coinchangeRecursive(coins,coins.size(),n));
+        System.out.println("\nNumber of ways to change coin using dp:"+coinchange2(coins,n));
 	}
+	
+	public static int coinchangeRecursive(ArrayList<Integer> a, int b,int n) {
+		if(n==0)	//if b==0 then there is 1 solution possible
+        	return 1;
+        if(n<0)	//if n<0 then there is no solution possible
+        	return 0;
+        if(b<=0 && n>=1)
+        	return 0;
+        return coinchangeRecursive(a,b-1,n)+coinchangeRecursive(a,b,n-a.get(b-1));
+    }
 	
 	//return number of ways in which value can be changed using given denominations
 	public static int coinchange2(ArrayList<Integer> a, int b) {
