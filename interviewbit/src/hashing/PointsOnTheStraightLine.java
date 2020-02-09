@@ -9,11 +9,13 @@ public class PointsOnTheStraightLine {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Integer[] arr1=new Integer[]{0,3,-6,5,8,2};
+		Integer[] arr1=new Integer[]{4,8,-4};
 		ArrayList<Integer> a=new ArrayList<>(Arrays.asList(arr1));
-		Integer[] arr2=new Integer[]{1,6,4,2,-3,8};
+		Integer[] arr2=new Integer[]{-4,-4,-4};
 		ArrayList<Integer> b=new ArrayList<>(Arrays.asList(arr2));
 		int count=maxPoints(a, b);
+		System.out.println(count);
+		count=maxPoints1(a, b);
 		System.out.println(count);
 	}
 	public static int maxPoints(ArrayList<Integer> a, ArrayList<Integer> b) {
@@ -62,7 +64,7 @@ public class PointsOnTheStraightLine {
 	}
 	
 	//working
-	public int maxPoints1(ArrayList<Integer> A, ArrayList<Integer> B) {
+	public static int maxPoints1(ArrayList<Integer> A, ArrayList<Integer> B) {
 	    HashMap<Double, Integer> hashMap = new HashMap<>();
 	    
 	    if (A == null || B == null)
@@ -81,7 +83,7 @@ public class PointsOnTheStraightLine {
 	        x1 = A.get(i);
 	        y1 = B.get(i);
 	        hashMap.clear();
-	        
+	        System.out.println("for i :"+i+" ("+x1+","+y1+")");
 	        for (int j = 0; j < n; j++) {
 	            
 	            if (i == j)
@@ -89,7 +91,7 @@ public class PointsOnTheStraightLine {
 	            
 	            x2 = A.get(j);
 	            y2 = B.get(j);
-	            
+	            System.out.println("for j :"+j+" ("+x2+","+y2+")");
 	            double slope = y2 - y1;
 	            int den = x2 - x1;
 	            
@@ -97,7 +99,7 @@ public class PointsOnTheStraightLine {
 	                slope = Double.POSITIVE_INFINITY;
 	            else
     	            slope = slope / den;
-	            
+	            System.out.println("slope:"+slope);
 	            val = 1;
 	            
 	            if (hashMap.containsKey(slope)) {
@@ -107,11 +109,14 @@ public class PointsOnTheStraightLine {
 	            hashMap.put(slope, val);
 	            
 	        }
+	        System.out.println("Map:"+hashMap);
 	        
 	        for (Map.Entry<Double, Integer> entry : hashMap.entrySet()) {
     	        val = entry.getValue();
     	        max = Math.max(max, val);
 	        }
+	        System.out.println("Max:"+max);
+	        System.out.println();
 	    }
 	    
 	    return max + 1;
